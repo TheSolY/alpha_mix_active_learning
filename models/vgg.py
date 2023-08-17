@@ -10,8 +10,8 @@ class VGGClassifier(nn.Module):
 
         self.n_label = n_label
 
-        model = getattr(models, arch_name)
-        self.vgg = model(weights=None)
+        vgg = getattr(models, arch_name)
+        self.vgg = vgg(weights=None)
 
         # Remove linear layer
         modules = list(self.vgg.features.children())
