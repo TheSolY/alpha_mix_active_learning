@@ -1,5 +1,5 @@
 import torch.nn as nn
-import torchvision.models as models
+import torchvision.models
 from models.utils import build_mlp
 
 
@@ -10,7 +10,7 @@ class VGGClassifier(nn.Module):
 
         self.n_label = n_label
 
-        vgg_model = getattr(models, arch_name)
+        vgg_model = getattr(torchvision.models, arch_name)
         self.vgg = vgg_model(weights=None)
 
         # Remove linear layer
