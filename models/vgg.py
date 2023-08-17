@@ -4,14 +4,14 @@ from models.utils import build_mlp
 
 
 class VGGClassifier(nn.Module):
-    def __init__(self, arch_name='vgg11', n_label=10, pretrained=True, dropout=0.,
+    def __init__(self, arch_name='vgg16', n_label=10, pretrained=False, dropout=0.,
                  fine_tune_layers=1, emb_size=256, in_channels=1):
         super(VGGClassifier, self).__init__()
 
         self.n_label = n_label
 
         model = getattr(models, arch_name)
-        self.vgg = model(pretrained=pretrained)
+        self.vgg = model(weights=None)
 
         # Remove linear layer
         modules = list(self.vgg.features.children())
