@@ -10,8 +10,8 @@ class VGGClassifier(nn.Module):
 
         self.n_label = n_label
 
-        vgg_model = getattr(torchvision.models, arch_name)
-        self.vgg = vgg_model(weights=None)
+        vgg_model = torchvision.models.vgg16(weights=None)
+        self.vgg = vgg_model
 
         # Remove linear layer
         modules = list(self.vgg.features.children())
